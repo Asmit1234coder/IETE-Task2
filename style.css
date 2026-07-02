@@ -1,0 +1,300 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f6fb;
+    color:#333;
+}
+
+/* Header */
+
+.header{
+    width:100%;
+    background:linear-gradient(90deg,#5f7cff,#7a4fc9);
+    color:#fff;
+    text-align:center;
+    padding:25px 15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.header h1{
+    font-size:34px;
+    font-weight:700;
+}
+
+.header p{
+    margin-top:8px;
+    font-size:14px;
+    opacity:.9;
+}
+
+/* Main Container */
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:25px auto;
+}
+
+/* Top Layout */
+
+.top-section{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+/* Left & Right Cards */
+
+.left-panel,
+.right-panel{
+    background:#fff;
+    border-radius:10px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.left-panel{
+    flex:1;
+    min-width:340px;
+}
+
+.right-panel{
+    width:380px;
+}
+
+.left-panel h2,
+.right-panel h2{
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+/* Labels */
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-weight:500;
+}
+
+/* Inputs */
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d7d7d7;
+    border-radius:6px;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
+}
+
+input:focus,
+select:focus{
+    border-color:#5f7cff;
+}
+
+/* Buttons */
+
+.button-group{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    border-radius:6px;
+    transition:.3s;
+    font-size:15px;
+}
+
+.income-btn{
+    flex:1;
+    padding:12px;
+    background:#18b765;
+    color:white;
+}
+
+.expense-btn{
+    flex:1;
+    padding:12px;
+    background:#ff5a4a;
+    color:white;
+}
+
+.clear-btn{
+    margin-top:15px;
+    padding:12px 18px;
+    background:#8794a3;
+    color:white;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    opacity:.9;
+}
+
+/* Summary Cards */
+
+.summary-card{
+    background:#fff;
+    border-left:6px solid;
+    padding:18px;
+    margin-top:18px;
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+
+.summary-card span{
+    font-size:12px;
+    font-weight:600;
+    color:#666;
+}
+
+.summary-card h3{
+    margin-top:10px;
+    font-size:30px;
+}
+
+.income-card{
+    border-color:#18b765;
+}
+
+.income-card h3{
+    color:#18b765;
+}
+
+.expense-card{
+    border-color:#ff5a4a;
+}
+
+.expense-card h3{
+    color:#ff5a4a;
+}
+
+.balance-card{
+    border-color:#f4a300;
+}
+
+.balance-card h3{
+    color:#f4a300;
+}
+
+/* Transactions */
+
+.transaction-section{
+    background:#fff;
+    margin-top:25px;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.transaction-section h2{
+    margin-bottom:20px;
+}
+
+#transactionList{
+    list-style:none;
+}
+
+/* Transaction Item */
+
+.transaction-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    margin-bottom:12px;
+    border-radius:8px;
+    background:#fafafa;
+    box-shadow:0 2px 5px rgba(0,0,0,.05);
+}
+
+.transaction-item.income{
+    border-left:6px solid #18b765;
+}
+
+.transaction-item.expense{
+    border-left:6px solid #ff5a4a;
+}
+
+.transaction-details{
+    flex:1;
+}
+
+.transaction-details h4{
+    margin-bottom:5px;
+}
+
+.transaction-details p{
+    color:#777;
+    font-size:13px;
+}
+
+.transaction-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.transaction-amount{
+    font-size:18px;
+    font-weight:600;
+}
+
+.delete-btn{
+    background:#ff5a4a;
+    color:white;
+    padding:8px 14px;
+}
+
+.delete-btn:hover{
+    background:#e54838;
+}
+
+/* Empty Message */
+
+.empty{
+    text-align:center;
+    color:#999;
+    padding:35px;
+    font-style:italic;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+    .right-panel{
+        width:100%;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .button-group{
+        flex-direction:column;
+    }
+
+    .transaction-item{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .transaction-right{
+        width:100%;
+        justify-content:space-between;
+    }
+
+}
