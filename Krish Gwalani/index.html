@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlix - Movie Streaming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="logo">CineFlix</div>
+
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#plans">Plans</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+
+            <button class="signin-btn">Sign In</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>Unlimited Movies,<br>TV Shows & More</h1>
+
+            <p>Watch anywhere. Cancel anytime.</p>
+
+            <button onclick="watchNow()">Watch Now</button>
+        </div>
+
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+
+        <h2>Find Your Favorite Movie</h2>
+
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search movies..."
+        >
+
+    </section>
+
+    <!-- Genre Filters -->
+    <section class="genres">
+
+        <h2>Browse by Genre</h2>
+
+        <div class="genre-buttons">
+            <button onclick="filterMovies('All')">All</button>
+            <button onclick="filterMovies('Action')">Action</button>
+            <button onclick="filterMovies('Sci-Fi')">Sci-Fi</button>
+            <button onclick="filterMovies('Drama')">Drama</button>
+            <button onclick="filterMovies('Adventure')">Adventure</button>
+        </div>
+
+    </section>
+
+    <!-- Movies Section -->
+    <section class="movies" id="movies">
+
+        <h2>Trending Movies</h2>
+
+        <div id="movieContainer" class="movie-container"></div>
+
+    </section>
+
+    <!-- Subscription Plans -->
+    <section class="plans" id="plans">
+
+        <h2>Subscription Plans</h2>
+
+        <div class="plan-container">
+
+            <div class="plan-card">
+                <h3>Basic</h3>
+                <p>₹199 / month</p>
+                <ul>
+                    <li>720p Streaming</li>
+                    <li>1 Device</li>
+                    <li>Limited Content</li>
+                </ul>
+            </div>
+
+            <div class="plan-card">
+                <h3>Standard</h3>
+                <p>₹499 / month</p>
+                <ul>
+                    <li>1080p Streaming</li>
+                    <li>2 Devices</li>
+                    <li>Full Library</li>
+                </ul>
+            </div>
+
+            <div class="plan-card">
+                <h3>Premium</h3>
+                <p>₹799 / month</p>
+                <ul>
+                    <li>4K Streaming</li>
+                    <li>4 Devices</li>
+                    <li>Premium Content</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+
+        <h2>CineFlix</h2>
+
+        <p>Unlimited Entertainment at Your Fingertips</p>
+
+        <p>© 2026 CineFlix. All Rights Reserved.</p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
