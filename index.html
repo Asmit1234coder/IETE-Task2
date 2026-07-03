@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multipurpose Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="calculator">
+
+    <p class="eyebrow">Calculator &amp; Everyday Tools</p>
+    <h1 class="title">Multipurpose Calculator</h1>
+
+    <!-- Top-level switcher: which tool is the user using right now? -->
+    <div class="tool-switch">
+      <button id="calcToolBtn" class="tool-btn active-tool" data-tool="calc" type="button">Calc</button>
+      <button id="bmiToolBtn" class="tool-btn" data-tool="bmi" type="button">BMI</button>
+      <button id="ageToolBtn" class="tool-btn" data-tool="age" type="button">Age</button>
+      <button id="tipToolBtn" class="tool-btn" data-tool="tip" type="button">Tip</button>
+      <button id="convertToolBtn" class="tool-btn" data-tool="convert" type="button">Convert</button>
+    </div>
+
+    <div id="calcTool" class="tool-panel">
+
+      <div class="mode-switch">
+        <button id="basicModeBtn" class="mode-btn active-mode" type="button">Basic</button>
+        <button id="scientificModeBtn" class="mode-btn" type="button">Scientific</button>
+      </div>
+
+      <div class="screen">
+        <div id="expressionText" class="expression-text"></div>
+        <div id="mainDisplay" class="main-display">0</div>
+      </div>
+
+      
+      <div id="scientificPanel" class="scientific-panel hidden">
+        <button id="degRadBtn" class="btn deg-btn full-width" type="button">DEG</button>
+
+        <button class="btn func-btn" data-function="sin" type="button">sin</button>
+        <button class="btn func-btn" data-function="cos" type="button">cos</button>
+        <button class="btn func-btn" data-function="tan" type="button">tan</button>
+        <button class="btn func-btn" data-function="sqrt" type="button">√x</button>
+
+        <button class="btn func-btn" data-function="square" type="button">x²</button>
+        <button class="btn op-btn" data-operator="^" type="button">x^y</button>
+        <button class="btn func-btn" data-function="log" type="button">log</button>
+        <button class="btn func-btn" data-function="ln" type="button">ln</button>
+
+        <button class="btn func-btn" data-function="pi" type="button">π</button>
+        <button class="btn func-btn" data-function="e" type="button">e</button>
+        <button class="btn func-btn" data-function="factorial" type="button">n!</button>
+        <button class="btn func-btn" data-function="reciprocal" type="button">1/x</button>
+      </div>
+
+      
+      <div class="basic-panel">
+        <button id="clearBtn" class="btn clear-btn" type="button">AC</button>
+        <button id="deleteBtn" class="btn delete-btn" type="button">⌫</button>
+        <button class="btn func-btn" data-function="percent" type="button">%</button>
+        <button class="btn op-btn" data-operator="÷" type="button">÷</button>
+
+        <button class="btn num-btn" data-number="7" type="button">7</button>
+        <button class="btn num-btn" data-number="8" type="button">8</button>
+        <button class="btn num-btn" data-number="9" type="button">9</button>
+        <button class="btn op-btn" data-operator="×" type="button">×</button>
+
+        <button class="btn num-btn" data-number="4" type="button">4</button>
+        <button class="btn num-btn" data-number="5" type="button">5</button>
+        <button class="btn num-btn" data-number="6" type="button">6</button>
+        <button class="btn op-btn" data-operator="-" type="button">−</button>
+
+        <button class="btn num-btn" data-number="1" type="button">1</button>
+        <button class="btn num-btn" data-number="2" type="button">2</button>
+        <button class="btn num-btn" data-number="3" type="button">3</button>
+        <button class="btn op-btn" data-operator="+" type="button">+</button>
+
+        <button class="btn num-btn zero" data-number="0" type="button">0</button>
+        <button class="btn num-btn" data-number="." type="button">.</button>
+        <button id="equalsBtn" class="btn equals-btn" type="button">=</button>
+      </div>
+    </div>
+
+
+    
+    <div id="bmiTool" class="tool-panel hidden">
+
+      <div class="mode-switch">
+        <button id="metricBtn" class="mode-btn active-mode" type="button">Metric</button>
+        <button id="imperialBtn" class="mode-btn" type="button">Imperial</button>
+      </div>
+
+      <div class="form-group">
+        <label for="bmiWeight">Weight (<span id="weightUnitLabel">kg</span>)</label>
+        <input type="number" id="bmiWeight" class="text-input" placeholder="e.g. 65" />
+      </div>
+
+      <div class="form-group">
+        <label for="bmiHeight">Height (<span id="heightUnitLabel">cm</span>)</label>
+        <input type="number" id="bmiHeight" class="text-input" placeholder="e.g. 170" />
+      </div>
+
+      <button id="bmiCalculateBtn" class="btn equals-btn action-btn" type="button">Calculate BMI</button>
+
+      <div id="bmiResult" class="result-box hidden">
+        <div class="result-value" id="bmiValue">--</div>
+        <div class="result-label" id="bmiCategory">--</div>
+      </div>
+    </div>
+
+
+   
+    <div id="ageTool" class="tool-panel hidden">
+
+      <div class="form-group">
+        <label for="birthDate">Date of birth</label>
+        <input type="date" id="birthDate" class="text-input" />
+      </div>
+
+      <button id="ageCalculateBtn" class="btn equals-btn action-btn" type="button">Calculate Age</button>
+
+      <div id="ageResult" class="result-box hidden">
+        <div class="result-value" id="ageValue">--</div>
+        <div class="result-label" id="ageNextBirthday">--</div>
+      </div>
+    </div>
+
+
+   
+    <div id="tipTool" class="tool-panel hidden">
+
+      <div class="form-group">
+        <label for="billAmount">Bill amount</label>
+        <input type="number" id="billAmount" class="text-input" placeholder="e.g. 50" />
+      </div>
+
+      <div class="form-group">
+        <label>Tip percentage</label>
+        <div class="tip-percent-row">
+          <button class="btn tip-percent-btn" data-percent="10" type="button">10%</button>
+          <button class="btn tip-percent-btn selected-percent" data-percent="15" type="button">15%</button>
+          <button class="btn tip-percent-btn" data-percent="18" type="button">18%</button>
+          <button class="btn tip-percent-btn" data-percent="20" type="button">20%</button>
+        </div>
+        <input type="number" id="customTipPercent" class="text-input" placeholder="or enter a custom %" />
+      </div>
+
+      <div class="form-group">
+        <label for="splitCount">Split between (people)</label>
+        <input type="number" id="splitCount" class="text-input" value="1" min="1" />
+      </div>
+
+      <button id="tipCalculateBtn" class="btn equals-btn action-btn" type="button">Calculate Tip</button>
+
+      <div id="tipResult" class="result-box hidden">
+        <div class="result-row"><span>Tip amount</span><span id="tipAmount">--</span></div>
+        <div class="result-row"><span>Total</span><span id="tipTotal">--</span></div>
+        <div class="result-row"><span>Per person</span><span id="tipPerPerson">--</span></div>
+      </div>
+    </div>
+
+
+   
+    <div id="convertTool" class="tool-panel hidden">
+
+      <div class="mode-switch">
+        <button id="lengthCatBtn" class="mode-btn active-mode" type="button">Length</button>
+        <button id="weightCatBtn" class="mode-btn" type="button">Weight</button>
+        <button id="tempCatBtn" class="mode-btn" type="button">Temp</button>
+      </div>
+
+      <!-- Length -->
+      <div id="lengthConvert" class="convert-panel">
+        <input type="number" id="lengthValue" class="text-input" placeholder="Enter a value" />
+        <div class="convert-row">
+          <select id="lengthFrom" class="select-input">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="centimeters">Centimeters</option>
+            <option value="feet">Feet</option>
+            <option value="inches">Inches</option>
+            <option value="miles">Miles</option>
+          </select>
+          <span class="convert-arrow">→</span>
+          <select id="lengthTo" class="select-input">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="centimeters">Centimeters</option>
+            <option value="feet">Feet</option>
+            <option value="inches" selected>Inches</option>
+            <option value="miles">Miles</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div id="weightConvert" class="convert-panel hidden">
+        <input type="number" id="weightValue" class="text-input" placeholder="Enter a value" />
+        <div class="convert-row">
+          <select id="weightFrom" class="select-input">
+            <option value="kilograms">Kilograms</option>
+            <option value="grams">Grams</option>
+            <option value="pounds">Pounds</option>
+            <option value="ounces">Ounces</option>
+          </select>
+          <span class="convert-arrow">→</span>
+          <select id="weightTo" class="select-input">
+            <option value="kilograms">Kilograms</option>
+            <option value="grams">Grams</option>
+            <option value="pounds" selected>Pounds</option>
+            <option value="ounces">Ounces</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Temperature -->
+      <div id="tempConvert" class="convert-panel hidden">
+        <input type="number" id="tempValue" class="text-input" placeholder="Enter a value" />
+        <div class="convert-row">
+          <select id="tempFrom" class="select-input">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+          </select>
+          <span class="convert-arrow">→</span>
+          <select id="tempTo" class="select-input">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit" selected>Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="convertCalculateBtn" class="btn equals-btn action-btn" type="button">Convert</button>
+
+      <div id="convertResult" class="result-box hidden">
+        <div class="result-value" id="convertValue">--</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
