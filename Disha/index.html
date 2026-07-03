@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise — Expense Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area" id="logo-home">
+                <i class="fa-solid fa-wallet logo-icon"></i>
+                <h1>Spend<span>Wise</span></h1>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-btn" id="theme-toggle-btn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    
+    <main class="app-container">
+        
+        
+        <section class="overview-grid">
+            
+            <div class="card balance-card">
+                <div class="card-info">
+                    <span class="card-title">Total Balance</span>
+                    <h2 id="total-balance">₹0.00</h2>
+                </div>
+                <i class="fa-solid fa-scale-balanced card-icon"></i>
+            </div>
+
+        
+            <div class="card income-card">
+                <div class="card-info">
+                    <span class="card-title">Total Income</span>
+                    <h2 id="total-income">₹0.00</h2>
+                </div>
+                <i class="fa-solid fa-circle-arrow-down card-icon"></i>
+            </div>
+
+            
+            <div class="card expense-card">
+                <div class="card-info">
+                    <span class="card-title">Total Expenses</span>
+                    <h2 id="total-expenses">₹0.00</h2>
+                </div>
+                <i class="fa-solid fa-circle-arrow-up card-icon"></i>
+            </div>
+        </section>
+
+        
+        <section class="analytics-grid">
+            
+            <div class="panel budget-panel">
+                <h3 class="panel-title"><i class="fa-solid fa-bullseye"></i> Budget Limit</h3>
+                
+                <div class="budget-setup-row">
+                    <input type="number" id="budget-input" value="15000" min="1">
+                    <button class="btn" id="save-budget-btn">Apply</button>
+                </div>
+                
+                <div class="budget-progress-container">
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="budget-progress-bar"></div>
+                    </div>
+                    <div class="progress-details">
+                        <span id="budget-used-text">₹0 spent / ₹15,000</span>
+                        <span id="budget-percent-text">0%</span>
+                    </div>
+                </div>
+                
+                <p class="budget-message" id="budget-status-message">Setup a budget limit to control expenses.</p>
+            </div>
+
+            
+            <div class="panel chart-panel">
+                <h3 class="panel-title"><i class="fa-solid fa-chart-pie"></i> Category Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="category-chart"></canvas>
+                </div>
+                <div class="no-chart-data hidden" id="no-chart-data">
+                    <p>Add expenses to see category wise distribution</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="dashboard-grid">
+            
+            <div class="panel form-panel">
+                <h3 class="panel-title"><i class="fa-solid fa-plus-minus"></i> Add Transaction</h3>
+                <form id="transaction-form">
+                    
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="tx-description" placeholder="e.g. Salary, Rent, Groceries" required>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label>Amount (₹)</label>
+                        <input type="number" id="tx-amount" placeholder="0.00" min="1" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="tx-type" class="custom-select" required>
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="tx-category" class="custom-select" required>
+                            <option value="Food & Dining">Food & Dining</option>
+                            <option value="Utilities">Utilities & Bills</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Salary">Salary (Income)</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="tx-date" required>
+                    </div>
+
+                    <button type="submit" class="btn submit-btn">Add Transaction</button>
+                </form>
+            </div>
+
+            
+            <div class="panel history-panel">
+                <div class="panel-header-row">
+                    <h3 class="panel-title"><i class="fa-solid fa-list"></i> History</h3>
+                    
+                    <div class="history-controls">
+                    
+                        <select id="history-filter-type" class="custom-select">
+                            <option value="all">All Types</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                        
+                        <input type="text" id="history-search" placeholder="Search...">
+                    </div>
+                </div>
+
+                <div class="transaction-list" id="transaction-list">
+                    
+                </div>
+
+                <div class="empty-state hidden" id="empty-state">
+                    <p>No transactions recorded yet.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <div class="modal-overlay hidden" id="edit-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h2>Edit Transaction</h2>
+                <form id="edit-form">
+                    
+                    <input type="hidden" id="edit-tx-id">
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="edit-tx-description" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amount (₹)</label>
+                        <input type="number" id="edit-tx-amount" min="1" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="edit-tx-type" class="custom-select" required>
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="edit-tx-category" class="custom-select" required>
+                            <option value="Food & Dining">Food & Dining</option>
+                            <option value="Utilities">Utilities & Bills</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="edit-tx-date" required>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" class="btn">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" id="edit-cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>

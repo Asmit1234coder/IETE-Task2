@@ -1,0 +1,292 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Zalando Sans SemiExpanded', Tahoma;
+}
+
+body{
+    background-color: rgb(26, 25, 25);
+    color: rgb(250, 247, 242);
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.movieCard{
+    width: clamp(150px, 95vw, 250px);
+    height: 400px;
+    box-shadow: 0px 0px 1rem rgba(250, 247, 242, 0.695);
+    outline: 1px solid white;
+    overflow: hidden;
+    overflow-y: auto;
+    color: white;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.img{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    transition: 200ms ease-in-out transform;
+}
+
+.img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background-image: linear-gradient(to top, rgb(26, 25, 25), transparent);
+}
+
+.movieDetails{
+    padding: 2rem 1rem 1rem;
+}
+
+.movieDetails h3{
+    padding-bottom: 2rem;
+    font-size: 1.7rem;
+}
+
+.statsinfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin: 0.2rem 0;
+}
+
+.movieCard:hover .img{
+    transform: scale(1.1);
+}
+
+.movieGrid{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+    padding: 5px;
+}
+
+.container{
+    padding: 1rem;
+    text-align: left;
+    color: rgb(250, 247, 242);
+}
+
+.container trending{
+    padding: 1rem;
+    text-align: left;
+    color: rgb(250, 247, 242);
+}
+
+.container h1{
+    margin-bottom: 1.5rem;
+    color: rgb(250, 247, 242);
+}
+
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#searchBar{
+    padding: 0.5rem 2rem;
+    font-size: 1.3rem;
+    font-weight: 300;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(81, 84, 85, 0.82);
+    color: rgb(250, 247, 242);
+}
+
+::placeholder{
+    color: rgba(181, 180, 179, 0.932);
+}
+
+#searchButton{
+    background-color: rgba(81, 84, 85, 0.82);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: 300;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: rgb(250, 247, 242);
+}
+
+#searchButton:hover{
+    background-color: rgba(91, 95, 96, 0.82);
+}
+
+#searchButton:active{
+    background-color: rgba(74, 76, 77, 0.82);
+    transform: scale(0.99);
+}
+
+.favoriteMovieBox h1{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.popupBox{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.758);
+    backdrop-filter: blur(8px);
+    background-position: center;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(250, 247, 242);
+    padding: 3rem;
+    overflow-y: scroll;
+    transform: scale(0);
+    transition: 200ms ease-in-out transform;
+}
+
+.content{
+    display: flex;
+    align-items: flex-start;
+    gap: 3.5rem;
+    width: 1200px;
+    margin-top: 2em;
+}
+
+.posterImg{
+    margin: 5.5em 0;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0px 0px 1rem rgba(250, 247, 242, 0.5);
+}
+
+.posterImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.single-info-container { 
+    width: 200px; 
+}
+
+.right > *:not(h1) { 
+    margin: 0; 
+}
+
+.trailer iframe {
+    margin-top: 1.3rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(250, 247, 242, 0.6);
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    height: 200px;
+}
+.exitX {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.exitX:hover { 
+    transform: scale(1.1); 
+}
+
+.exitX:active { 
+    transform: scale(1); 
+}
+
+.show_moreDetails{
+    transform: scale(1);
+}
+
+.lengthDurationetc{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 0.5rem;
+}
+
+.right h1{
+    font-weight: 600;
+    font-size: 2.7rem
+}
+
+.right h3{
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.information{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    padding: 3px;
+    border-bottom: 1px dotted rgba(250, 247, 242, 0.836);
+    font-size: 1.2rem;
+}
+
+.genres h2{
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.genres ul{
+    font-size: 1.2em;
+    font-weight: 100;
+    list-style-type: circle;
+}
+
+.genres ul > li{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px 0;
+    
+}
+
+.genres ul li:last-child {
+    border-bottom: none;
+}
+
+.overview h2{
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.overview p{
+    font-size: 1.2rem;
+    line-height: 1.8;
+    padding: 8px 0;
+}
+
+.trailer h2{
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
